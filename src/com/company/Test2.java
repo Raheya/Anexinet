@@ -3,9 +3,9 @@ package com.company;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Test2 {
-// not time not working
     public static void main(String [] args){
         Integer [] a = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
         Integer [] b = {3,2,9,3,7,11,15,13,23,27,32,35,36,37};
@@ -14,12 +14,23 @@ public class Test2 {
 
         List<Integer> lista = Arrays.asList(a);
         List<Integer> listb = Arrays.asList(b);
+        List<Integer> listMiddle = lista.stream().filter(listb::contains).collect(Collectors.toList());
         List<Integer> listc = Arrays.asList(c);
         List<Integer> listd = Arrays.asList(d);
+        List<Integer> listLast = listc.stream().filter(listd::contains).collect(Collectors.toList());
 
-        lista.retainAll(listb);
-        System.out.println("Common elements: "
-                + lista);
+        List<Integer> listA = new ArrayList<>();
+        listA.add(1);
+        listA.add(5);
+        listA.add(3);
+        listA.add(4);
+
+        List<Integer> listB = new ArrayList<>();
+        listB.add(1);
+        listB.add(5);
+        listB.add(6);
+        listB.add(7);
+        System.out.println(listMiddle.stream().filter(listLast::contains).collect(Collectors.toList()));
 
 
     }
